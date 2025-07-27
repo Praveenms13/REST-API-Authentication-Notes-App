@@ -1,23 +1,28 @@
 # API Based Notes App
 
-### API Base Url: https://restapi.praveenms.site
-### View : 
+### API Base Url: https://restapi.praveenms.in
+
+### View :
+
 This Repo has only Backend codes for the notes app(Soon it'll be available as python app or android app) which follows OAuth 2.0, REST API Protocols.
 
 ## Login API
 
 ### Request
+
 ```
 POST /auth/login
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| username | Can be username or email address of the registered user |
-| password | Password provided by the user |
+
+| Attribute | Description                                             |
+| --------- | ------------------------------------------------------- |
+| username  | Can be username or email address of the registered user |
+| password  | Password provided by the user                           |
 
 ### Response
+
 There are 3 type of responses each associated with a status code.
 | Status Code | Description |
 | ------ | ------ |
@@ -26,6 +31,7 @@ There are 3 type of responses each associated with a status code.
 | 400 | Bad request format or not all attributes are provided. |
 
 ### Note
+
 To all the subsequent requests that perform CURD on Notes and Folder, you should pass the `access_token` over your header like the following
 
 ```
@@ -33,11 +39,13 @@ Authorization: Bearer <access_token>
 ```
 
 ##### Example:
+
 ```
 Authorization: Bearer a.3f8f961077b54e0e76251dafd678qw34af00adf7d4418b2524bc2334fb1938f1
 ```
 
 #### Response Examples
+
 ##### 200
 
 ```
@@ -72,16 +80,19 @@ Authorization: Bearer a.3f8f961077b54e0e76251dafd678qw34af00adf7d4418b2524bc2334
 ## Refresh Access API
 
 ### Request
+
 ```
 POST /auth/refresh
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
+
+| Attribute     | Description                           |
+| ------------- | ------------------------------------- |
 | refresh_token | <refresh_token_acquired_during_login> |
 
 ### Response
+
 There are 3 type of responses each associated with a status code.
 | Status Code | Description |
 | ------ | ------ |
@@ -90,9 +101,11 @@ There are 3 type of responses each associated with a status code.
 | 400 | Bad request format or not all attributes are provided. |
 
 ### Note
+
 To check if an `access_token` is valid, you can use [Get Current User API](https://git.selfmade.ninja/sibidharan/api-development-course-apr-2021/-/wikis/Get-Current-User-API).
 
 #### Examples
+
 ##### 200
 
 ```
@@ -127,18 +140,21 @@ To check if an `access_token` is valid, you can use [Get Current User API](https
 ## Signup API
 
 ### Request
+
 ```
 POST /auth/signup
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
+
+| Attribute  | Description                                                                      |
+| ---------- | -------------------------------------------------------------------------------- |
 | `username` | Any username without space, and must be alpha numeric. Some symbols are allowed. |
-| `password` | Any password greater than 8 characters |
-| `email`   | Email address of the user to which verification is sent. Must be a valid one. |
+| `password` | Any password greater than 8 characters                                           |
+| `email`    | Email address of the user to which verification is sent. Must be a valid one.    |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -147,39 +163,51 @@ There are 3 types of responses.
 | 409 | User already exists |
 
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "message": "Signup success",
     "userid": 41
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
+
 ##### 409 Conflict
+
 ```
 {
     "error": "Unable to signup."
 }
 ```
--------
--------
+
+---
+
+---
+
 <br />
 <br />
 
 # Get Current User
+
 Can be used to check the validity of the access token.
 
 ### Request
+
 ```
 POST /auth/current
 ```
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -188,47 +216,58 @@ There are 3 types of responses.
 | 400 | Bad request or Token expired |
 
 #### Examples
+
 ##### 200 OK
+
 ```
 {
    "username": "name of the user"
 }
 ```
+
 ##### 403 Forbidden Error
+
 ```
 {
     "error": "unauthorized user"
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
    "error": "Expired token" or "error": "Bad request"
 }
 ```
 
--------
--------
+---
+
+---
+
 <br />
 <br />
 
-# Notes 
+# Notes
 
 ## Get a new Note
 
 ### Request
+
 ```
   POST /notes/get
   Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `Token` | Need to provide the token which generated during the login |
-| `id`   | Need to provide id of that paticular note. |
+
+| Attribute | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `Token`   | Need to provide the token which generated during the login |
+| `id`      | Need to provide id of that paticular note.                 |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -236,10 +275,10 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format or Not all attributes are available. |
 
-
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
    "title": "hello world"
@@ -247,7 +286,9 @@ There are 3 types of responses.
    "created": "1 day ago"
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
@@ -257,19 +298,23 @@ There are 3 types of responses.
 ## Edit an existing note
 
 ...
+
 ### Request
+
 ```
 POST /auth/Edit
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
+
+| Attribute          | Description                                   |
+| ------------------ | --------------------------------------------- |
 | `Note_search_Term` | Need of paticular NoteId (or) Title (or) Body |
 
 | `Token` | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -277,9 +322,10 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format or Not all attributes are available. |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "id": "1"
@@ -290,7 +336,9 @@ There are 3 types of responses.
 
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
@@ -300,17 +348,20 @@ There are 3 types of responses.
 ## Delete note
 
 ### Request
+
 ```
 POST /auth/delete
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `Note_search_Term` | Need of paticular NoteId (or) Title (or) Body |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute          | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `Note_search_Term` | Need of paticular NoteId (or) Title (or) Body    |
+| `Token`            | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -318,35 +369,41 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "message": "success"
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
 
-## get all notes 
+## get all notes
 
 ### Request
+
 ```
 POST /auth/get
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `Note_search_Term` | Need of paticular NoteId (or) Title (or) Body |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute          | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `Note_search_Term` | Need of paticular NoteId (or) Title (or) Body    |
+| `Token`            | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -354,14 +411,15 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     id": "33",
     "title": "Dummy note 1",
-    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis convallis erat. Aenean 
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis convallis erat. Aenean
              posuere condimentum efficitur.",
     "created": "21 minutes ago",
     "updated": "21 minutes ago"
@@ -370,38 +428,48 @@ There are 3 types of responses.
 {
     id": "34",
     "title": "Dummy note 2",
-    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis convallis erat. Aenean 
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis convallis erat. Aenean
              posuere condimentum efficitur.",
     "created": "21 minutes ago",
     "updated": "21 minutes ago"
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
--------
--------
+
+---
+
+---
+
 <br />
 <br />
 
 # Folders
+
 ## create a new folder
+
 ### Request
+
 ```
   POST /folder/new
   Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `Token` | Need to provide the token which generated during the login |
-| `Name`  | Need to provide the name of the folder. |
+
+| Attribute | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `Token`   | Need to provide the token which generated during the login |
+| `Name`    | Need to provide the name of the folder.                    |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -409,15 +477,18 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format or Not all attributes are available. |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "folder_id": 13
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
@@ -427,17 +498,20 @@ There are 3 types of responses.
 ## Get all notes
 
 ### Request
+
 ```
 POST /folder/get_all_notes
 Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| `Token`   | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -445,9 +519,10 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format or Not all attributes are available. |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "count": "2",
@@ -467,9 +542,11 @@ There are 3 types of responses.
 
 ]
 }
-   
+
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
@@ -479,18 +556,21 @@ There are 3 types of responses.
 ## Delete note
 
 ### Request
+
 ```
 POST /auth/delete
 Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
+
+| Attribute          | Description                                       |
+| ------------------ | ------------------------------------------------- |
 | `Note_search_Term` | Need of particular folder Id (or) Title (or) Body |
-| `Token` | Need to provide the token generated during login |
+| `Token`            | Need to provide the token generated during login  |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -498,36 +578,42 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
     "message": "success"
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
 
-## list 
+## list
 
 ### Request
+
 ```
 GET /folder/get
 Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `id`    | need to provide the id of particular folder      |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| `id`      | need to provide the id of particular folder      |
+| `Token`   | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -535,9 +621,10 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {[
     {
@@ -565,32 +652,36 @@ There are 3 types of responses.
         "count": "0"
     }
 ]
-  
+
 }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
 
-
 ## Rename
 
 ### Request
+
 ```
 post /Folder/rename
 Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `id`    | need to provide the id of particular folder      |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| `id`      | need to provide the id of particular folder      |
+| `Token`   | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -598,9 +689,10 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
 
@@ -612,7 +704,9 @@ There are 3 types of responses.
 
  }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
@@ -622,18 +716,21 @@ There are 3 types of responses.
 ## Delete
 
 ### Request
+
 ```
 post /Folder/delete
 Authorization: Bearer <your_access_token>
 ```
 
 #### Form Data
-| Attribute | Description |
-| ------ | ------ |
-| `id`    | need to provide the id of particular folder      |
-| `Token` | Need to provide the token generated during login |
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| `id`      | need to provide the id of particular folder      |
+| `Token`   | Need to provide the token generated during login |
 
 ### Response
+
 There are 3 types of responses.
 | Status Code | Description |
 | ------ | ------ |
@@ -641,18 +738,20 @@ There are 3 types of responses.
 | 403 | unauthorized user. |
 | 400 | Bad Request Format . |
 
-
 #### Examples
+
 ##### 200 OK
+
 ```
 {
   "message": "success"
  }
 ```
+
 ##### 400 Bad Request
+
 ```
 {
     "error": "Bad request"
 }
 ```
-

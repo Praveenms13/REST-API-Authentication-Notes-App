@@ -113,7 +113,7 @@ class Signup
                 <div class='card'>
                     <h1>Hii, $this->username</h1>
                     <p>Please verify your email by clicking the link below:</p>
-                    <a href='https://restapi.praveenms.live/api/verify?token=$token'>Verify Email</a>
+                    <a href='https://restapi.praveenms.in/api/verify?token=$token'>Verify Email</a>
                 </div>
             </body>"
             );

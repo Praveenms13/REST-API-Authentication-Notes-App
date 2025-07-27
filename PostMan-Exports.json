@@ -24,7 +24,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": "https://restapi.praveenms.live/api/folders/list"
+						"url": "https://restapi.praveenms.in/api/folders/list"
 					},
 					"response": []
 				},
@@ -54,7 +54,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/folders/rename"
+						"url": "https://restapi.praveenms.in/api/folders/rename"
 					},
 					"response": []
 				},
@@ -79,7 +79,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/folders/new"
+						"url": "https://restapi.praveenms.in/api/folders/new"
 					},
 					"response": []
 				},
@@ -104,7 +104,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/folders/allnotes"
+						"url": "https://restapi.praveenms.in/api/folders/allnotes"
 					},
 					"response": []
 				},
@@ -129,7 +129,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/folders/delete"
+						"url": "https://restapi.praveenms.in/api/folders/delete"
 					},
 					"response": []
 				}
@@ -143,7 +143,7 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"url": "https://restapi.praveenms.live/api/about"
+						"url": "https://restapi.praveenms.in/api/about"
 					},
 					"response": []
 				},
@@ -172,7 +172,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/auth/signup"
+						"url": "https://restapi.praveenms.in/api/auth/signup"
 					},
 					"response": []
 				},
@@ -197,7 +197,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/auth/refresh"
+						"url": "https://restapi.praveenms.in/api/auth/refresh"
 					},
 					"response": []
 				},
@@ -227,7 +227,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/auth/login"
+						"url": "https://restapi.praveenms.in/api/auth/login"
 					},
 					"response": []
 				}
@@ -257,7 +257,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/notes/get"
+						"url": "https://restapi.praveenms.in/api/notes/get"
 					},
 					"response": []
 				},
@@ -292,7 +292,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/notes/edit"
+						"url": "https://restapi.praveenms.in/api/notes/edit"
 					},
 					"response": []
 				},
@@ -352,7 +352,7 @@
 								}
 							]
 						},
-						"url": "https://restapi.praveenms.live/api/notes/new"
+						"url": "https://restapi.praveenms.in/api/notes/new"
 					},
 					"response": []
 				}
